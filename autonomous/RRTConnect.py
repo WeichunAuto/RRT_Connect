@@ -100,12 +100,10 @@ class RRTConnect():
         second_tree_path = []
 
         first_tree_path.append(self.junctionNodes[0])
-        for parent in self.junctionNodes[0].parents:
-            self.append_parent_node(parent, first_tree_path)
+        self.append_parent_node(self.junctionNodes[0].parent, first_tree_path)
 
         second_tree_path.append(self.junctionNodes[1])
-        for parent in self.junctionNodes[1].parents:
-            self.append_parent_node(parent, second_tree_path)
+        self.append_parent_node(self.junctionNodes[1].parent, second_tree_path)
 
         return first_tree_path, second_tree_path
 
