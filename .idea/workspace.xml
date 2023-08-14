@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2206b68c-e655-4db3-b2ee-93717ced538d" name="Changes" comment="Fix solution path trace problem">
+    <list default="true" id="2206b68c-e655-4db3-b2ee-93717ced538d" name="Changes" comment="Environment with obstacles update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autonomous/Environment_Connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/autonomous/Environment_Connect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autonomous/ObsMap/obstacles.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/autonomous/ObsMap/obstacles.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autonomous/RRTConnect.py" beforeDir="false" afterPath="$PROJECT_DIR$/autonomous/RRTConnect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autonomous/Tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/autonomous/Tools.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +30,8 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/wangweichun/Algorithms/RRT_Connect&quot;
   }
 }</component>
   <component name="RunManager" selected="Python.Environment_Connect">
@@ -97,12 +99,20 @@
       <option name="project" value="LOCAL" />
       <updated>1691968846764</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Environment with obstacles update">
+      <created>1691969076070</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1691969076070</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix solution path trace problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix solution path trace problem" />
+    <MESSAGE value="Environment with obstacles update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Environment with obstacles update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -114,12 +124,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/autonomous/Environment_Connect.py</url>
-          <line>113</line>
+          <line>111</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/autonomous/RRTConnect.py</url>
-          <line>107</line>
+          <line>113</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

@@ -306,7 +306,7 @@ class Tools():
         if departure[1] < max_down:
             max_down = departure[1]
 
-        space_buffer = safety_radius * 1
+        space_buffer = safety_radius * 8
 
         return {
             'max_left': max_left + space_buffer,

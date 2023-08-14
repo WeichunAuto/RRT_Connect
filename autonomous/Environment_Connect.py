@@ -8,7 +8,7 @@ from autonomous.RRTConnect import RRTConnect
 from autonomous.Tools import Tools
 import numpy as np
 
-departure = (-400, -250)
+departure = (-380, -50)
 destination = (400, 130)
 #
 # departure = (0, 50)
@@ -20,7 +20,7 @@ fig, ax = plt.subplots(figsize=(10, 5))
 #
 txt_title = ax.set_title('Path Planning')
 
-obstacles = load_obstacles(20)
+obstacles = load_obstacles(50)
 # obstacles = generate_obstacles(8, style='S')
 # draw obstacles
 for obstacle in obstacles:
@@ -107,14 +107,11 @@ def visualize_paths(path, color, alpha=1):
     plt.plot(solution_x, solution_y, c=color, alpha=alpha)
 #
 visualize_tree(algo.treeNodes)
-# node1 = algo.connections[0][0]
-# node2 = algo.connections[0][1]
 #
 # plt.plot([node1.locationX, node2.locationX], [node1.locationY, node2.locationY], c='red')
-first_tree_path, second_tree_path = algo.get_solution_paths()
+solution_path = algo.get_solution_paths()
 
-visualize_paths(first_tree_path, 'blue')
-visualize_paths(second_tree_path, 'blue')
+visualize_paths(solution_path, 'blue')
 
 #
 # time3 = datetime.datetime.now()

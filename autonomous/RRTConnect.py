@@ -96,6 +96,8 @@ class RRTConnect():
         all possible path solutions
         :return: return a list with all possible path solutions
         """
+        solution_path = []
+
         first_tree_path = []
         second_tree_path = []
 
@@ -105,7 +107,11 @@ class RRTConnect():
         second_tree_path.append(self.junctionNodes[1])
         self.append_parent_node(self.junctionNodes[1].parent, second_tree_path)
 
-        return first_tree_path, second_tree_path
+        first_tree_path.reverse()
+        solution_path = first_tree_path
+        solution_path.extend(second_tree_path)
+
+        return solution_path
 
     def append_parent_node(self, node, solution_path):
         '''
