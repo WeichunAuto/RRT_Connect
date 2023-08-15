@@ -39,6 +39,7 @@ class RRTConnect():
     def grow_motion_path(self, isGreedy=False):
         """
         Rapidly grow random tree, find some path solutions
+        :param isGreedy: apply greedy strategy
         :return:
         """
         for iterate in range(self.maxIterations):
@@ -58,6 +59,14 @@ class RRTConnect():
             self.treeTurns.reverse()
 
     def generate_nexttree_nodes(self, tree, leadPoint, stepSize, isGreedy):
+        """
+        generate nodes in next tree
+        :param tree:
+        :param leadPoint:
+        :param stepSize:
+        :param isGreedy:
+        :return:
+        """
 
         self.minDistance = 0
         self.find_children_point_from_tree(tree, leadPoint, stepSize)
@@ -85,6 +94,12 @@ class RRTConnect():
             self.newPoint_closest = self.find_children_point_from_closestnode(self.closestNode, leadPoint, stepSize)
 
     def try_connect(self, leadPoint, newPoint_closest):
+        """
+        try to connect lead point and new point
+        :param leadPoint:
+        :param newPoint_closest:
+        :return:
+        """
 
         if Tools.is_legal_point(leadPoint, newPoint_closest, self.obstacles,
                                 self.safeRadius) is True and Tools.getDistance(leadPoint,
