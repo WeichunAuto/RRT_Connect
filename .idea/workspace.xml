@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2206b68c-e655-4db3-b2ee-93717ced538d" name="Changes" comment="Environment with obstacles update">
+    <list default="true" id="2206b68c-e655-4db3-b2ee-93717ced538d" name="Changes" comment="move it out from autonomous package">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autonomous/Environment_Connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/autonomous/Environment_Connect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Environment_Connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Environment_Connect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autonomous/Obstacles.py" beforeDir="false" afterPath="$PROJECT_DIR$/autonomous/Obstacles.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autonomous/RRTConnect.py" beforeDir="false" afterPath="$PROJECT_DIR$/autonomous/RRTConnect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autonomous/Tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/autonomous/Tools.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +31,17 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/wangweichun/Algorithms/RRT_Connect&quot;
+    &quot;last_opened_file_path&quot;: &quot;/Users/wangweichun/Algorithms/RRT_Connect/images&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.Environment_Connect">
     <configuration name="Environment_Connect" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RRT_Connect" />
@@ -47,7 +55,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/autonomous/Environment_Connect.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Environment_Connect.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -106,31 +114,63 @@
       <option name="project" value="LOCAL" />
       <updated>1691969076070</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="trace solution path">
+      <created>1691984864597</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1691984864597</updated>
+    </task>
+    <task id="LOCAL-00004" summary="write some comments for some functions">
+      <created>1692091276227</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692091276227</updated>
+    </task>
+    <task id="LOCAL-00005" summary="the screenshots of the result of experiments">
+      <created>1692091473598</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692091473598</updated>
+    </task>
+    <task id="LOCAL-00006" summary="move it out from autonomous package">
+      <created>1692091535293</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692091535294</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix solution path trace problem" />
     <MESSAGE value="Environment with obstacles update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Environment with obstacles update" />
+    <MESSAGE value="trace solution path" />
+    <MESSAGE value="write some comments for some functions" />
+    <MESSAGE value="the screenshots of the result of experiments" />
+    <MESSAGE value="move it out from autonomous package" />
+    <option name="LAST_COMMIT_MESSAGE" value="move it out from autonomous package" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/autonomous/Environment_Connect.py</url>
-          <line>111</line>
+          <url>file://$PROJECT_DIR$/Environment_Connect.py</url>
+          <line>122</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/autonomous/RRTConnect.py</url>
-          <line>113</line>
+          <line>147</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/autonomous/RRTConnect.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

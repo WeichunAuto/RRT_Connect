@@ -32,9 +32,13 @@ class RRTConnect():
         self.newPoint_closest = None
 
         self.connection = False
+        self.previousNewTPoint = self.departure
         self.junctionNodes = []
 
         self.NOS = 1  # Number of solutions to be produced
+
+        self.lastLeadPoint = None
+
 
     def grow_motion_path(self, isGreedy=False):
         """
@@ -43,6 +47,13 @@ class RRTConnect():
         :return:
         """
         for iterate in range(self.maxIterations):
+
+            if iterate >= self.maxIterations:
+                break
+
+            if self.newPoint_closest is not None:
+                self.previousNewTPoint = self.newPoint_closest
+
             self.get_legal_children_point(self.treeTurns[0])
             newChildNode = TreeNode(self.newPoint_closest[0], self.newPoint_closest[1])
             newChildNode.parent = self.closestNode
@@ -50,7 +61,9 @@ class RRTConnect():
             self.treeNodes.append(newChildNode)
 
             leadPoint = self.newPoint_closest
+
             self.generate_nexttree_nodes(self.treeTurns[1], leadPoint, self.stepSize, isGreedy)
+
             if self.connection is True:
                 self.junctionNodes.append(newChildNode)
                 print(f"iteration = {iterate}")
@@ -75,6 +88,8 @@ class RRTConnect():
                                            self.newPoint_closest,
                                            self.obstacles, self.safeRadius)
             if isLegal is not True:
+                # the purpose is to set previousNewTPoint = closestNode, when newPoint_closest is illegal
+                self.newPoint_closest = (self.closestNode.locationX, self.closestNode.locationY)
                 break
 
             newChildNode = TreeNode(self.newPoint_closest[0], self.newPoint_closest[1])
@@ -82,7 +97,7 @@ class RRTConnect():
             self.closestNode.children.append(newChildNode)
             self.treeNodes.append(newChildNode)
 
-            self.try_connect(leadPoint, self.newPoint_closest)
+            self.try_connect(leadPoint, self.previousNewTPoint, self.newPoint_closest)
             if self.connection is True:
                 self.junctionNodes.append(newChildNode)
                 break
@@ -93,16 +108,22 @@ class RRTConnect():
             self.closestNode = newChildNode
             self.newPoint_closest = self.find_children_point_from_closestnode(self.closestNode, leadPoint, stepSize)
 
-    def try_connect(self, leadPoint, newPoint_closest):
+    def try_connect(self, leadPoint, previousNewTPoint, newPoint_closest):
         """
         try to connect lead point and new point
         :param leadPoint:
         :param newPoint_closest:
         :return:
         """
+        self.lastLeadPoint = leadPoint
 
         if Tools.is_legal_point(leadPoint, newPoint_closest, self.obstacles,
                                 self.safeRadius) is True and Tools.getDistance(leadPoint,
+                                                                               newPoint_closest) <= self.targetRadius:
+            self.connection = True
+
+        elif Tools.is_legal_point(previousNewTPoint, newPoint_closest, self.obstacles,
+                                self.safeRadius) is True and Tools.getDistance(previousNewTPoint,
                                                                                newPoint_closest) <= self.targetRadius:
             self.connection = True
 
@@ -111,8 +132,6 @@ class RRTConnect():
         all possible path solutions
         :return: return a list with all possible path solutions
         """
-        solution_path = []
-
         first_tree_path = []
         second_tree_path = []
 
@@ -157,12 +176,7 @@ class RRTConnect():
         self.find_children_point_from_tree(tree, leadPoint, self.stepSize)
         isLegal = Tools.is_legal_point((self.closestNode.locationX, self.closestNode.locationY), self.newPoint_closest,
                                        self.obstacles, self.safeRadius)
-        # if isLegal is True:
-        #     # avoid find more local optimal possible solution
-        #     for parent in self.destinationTree.parents:
-        #         if self.closestNode.locationX == parent.locationX and self.closestNode.locationY == parent.locationY:
-        #             isLegal = False
-        #             break
+
         if isLegal is not True:
             self.get_legal_children_point(tree)
 
