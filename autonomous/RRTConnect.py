@@ -104,13 +104,13 @@ class RRTConnect():
 
             if isGreedy is False:
                 break
-
-            self.closestNode = newChildNode
-            self.newPoint_closest = self.find_children_point_from_closestnode(self.closestNode, leadPoint, stepSize)
+            else:
+                self.closestNode = newChildNode
+                self.newPoint_closest = self.find_children_point_from_closestnode(self.closestNode, leadPoint, stepSize)
 
     def try_connect(self, leadPoint, previousNewTPoint, newPoint_closest):
         """
-        try to connect lead point and new point
+        try to connect lead point and new point or previous new targeted point and new point
         :param leadPoint:
         :param newPoint_closest:
         :return:
