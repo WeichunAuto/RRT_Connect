@@ -40,7 +40,7 @@ class RRTConnect():
         self.lastLeadPoint = None
 
 
-    def grow_motion_path(self, isGreedy=False):
+    def grow_motion_path(self, isGreedy=False, isDynamicStep=False):
         """
         Rapidly grow random tree, find some path solutions
         :param isGreedy: apply greedy strategy
@@ -62,7 +62,7 @@ class RRTConnect():
 
             leadPoint = self.newPoint_closest
 
-            self.generate_nexttree_nodes(self.treeTurns[1], leadPoint, self.stepSize, isGreedy)
+            self.generate_nexttree_nodes(self.treeTurns[1], leadPoint, self.stepSize, isGreedy, isDynamicStep)
 
             if self.connection is True:
                 self.junctionNodes.append(newChildNode)
@@ -71,7 +71,7 @@ class RRTConnect():
 
             self.treeTurns.reverse()
 
-    def generate_nexttree_nodes(self, tree, leadPoint, stepSize, isGreedy):
+    def generate_nexttree_nodes(self, tree, leadPoint, stepSize, isGreedy, isDynamicStep):
         """
         generate nodes in next tree
         :param tree:
@@ -90,6 +90,11 @@ class RRTConnect():
             if isLegal is not True:
                 # the purpose is to set previousNewTPoint = closestNode, when newPoint_closest is illegal
                 self.newPoint_closest = (self.closestNode.locationX, self.closestNode.locationY)
+
+                # if the new point is illegal, then reset the stepSize
+                if isGreedy is True and isDynamicStep is True:
+                    stepSize = self.stepSize
+
                 break
 
             newChildNode = TreeNode(self.newPoint_closest[0], self.newPoint_closest[1])
@@ -105,6 +110,9 @@ class RRTConnect():
             if isGreedy is False:
                 break
             else:
+                if isDynamicStep is True:
+                    stepSize += self.stepSize
+
                 self.closestNode = newChildNode
                 self.newPoint_closest = self.find_children_point_from_closestnode(self.closestNode, leadPoint, stepSize)
 

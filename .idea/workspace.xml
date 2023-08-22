@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2206b68c-e655-4db3-b2ee-93717ced538d" name="Changes" comment="move it out from autonomous package">
+    <list default="true" id="2206b68c-e655-4db3-b2ee-93717ced538d" name="Changes" comment="format code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Environment_Connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Environment_Connect.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autonomous/Obstacles.py" beforeDir="false" afterPath="$PROJECT_DIR$/autonomous/Obstacles.py" afterDir="false" />
@@ -142,7 +142,21 @@
       <option name="project" value="LOCAL" />
       <updated>1692091535294</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fix bugs of RRT_connect without greedy strategy.">
+      <created>1692320979383</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1692320979383</updated>
+    </task>
+    <task id="LOCAL-00008" summary="format code">
+      <created>1692343123825</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1692343123825</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -152,7 +166,9 @@
     <MESSAGE value="write some comments for some functions" />
     <MESSAGE value="the screenshots of the result of experiments" />
     <MESSAGE value="move it out from autonomous package" />
-    <option name="LAST_COMMIT_MESSAGE" value="move it out from autonomous package" />
+    <MESSAGE value="Fix bugs of RRT_connect without greedy strategy." />
+    <MESSAGE value="format code" />
+    <option name="LAST_COMMIT_MESSAGE" value="format code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -164,7 +180,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/autonomous/RRTConnect.py</url>
-          <line>147</line>
+          <line>155</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

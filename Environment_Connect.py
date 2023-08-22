@@ -87,7 +87,7 @@ plt.plot([search_space['min_right'], search_space['min_right'], search_space['ma
 time1 = datetime.datetime.now()
 algo = RRTConnect(departure, destination, obstacles, safeRadius, maxIterations=5000)
 # algo.NOS = 1
-algo.grow_motion_path(isGreedy=False)
+algo.grow_motion_path(isGreedy=True, isDynamicStep=True)
 time2 = datetime.datetime.now()
 print(f"time1 = {time1}, time2 = {time2}")
 print(f"the time cost on searching a path = {(time2 - time1).total_seconds() * 1000}")
