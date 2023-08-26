@@ -29,14 +29,14 @@ for iterate in range(self.maxIterations):
   # 9. exchange trees, go to next iteration
   self.treeTurns.reverse()
 
-def try_connect(self, leadPoint, previousNewTPoint, newPoint_closest):
+def try_connect(self, leadPoint, previousNewTPoint, newPoint):
 
   # newPoint_closest is node N2 in the current iteration
   # previousNewTPoint is node N2 in the last iteration
 
-  if Tools.is_legal_point(leadPoint, newPoint_closest, self.obstacles, self.safeRadius) is True and Tools.getDistance(leadPoint, newPoint_closest) <= self.targetRadius:
+  if Tools.is_legal_point(leadPoint, newPoint, self.obstacles, self.safeRadius) is True and Tools.getDistance(leadPoint, newPoint) <= self.targetRadius:
     self.connection = True
-  elif Tools.is_legal_point(previousNewTPoint, newPoint_closest, self.obstacles, self.safeRadius) is True and Tools.getDistance(previousNewTPoint, newPoint_closest) <= self.targetRadius:
+  elif Tools.is_legal_point(previousNewTPoint, newPoint, self.obstacles, self.safeRadius) is True and Tools.getDistance(previousNewTPoint, newPoint) <= self.targetRadius:
     self.connection = True
 
   
