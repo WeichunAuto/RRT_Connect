@@ -93,7 +93,7 @@ class RRTConnect():
                     # the purpose is to set previousNewTPoint = closestNode, when newPoint is illegal
                     self.newPoint = (self.closestNode.locationX, self.closestNode.locationY)
 
-                    # if the new point is illegal, then reset the stepSize
+                    # if the new point is illegal, then reset the stepSize.
                     if isDynamicStep is True:
                         stepSize = self.stepSize
 
