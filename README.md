@@ -31,7 +31,7 @@ for iterate in range(self.maxIterations):
 
 def try_connect(self, leadPoint, previousNewTPoint, newPoint):
 
-  # newPoint_closest is node N2 in the current iteration
+  # newPoint is node N2 in the current iteration
   # previousNewTPoint is node N2 in the last iteration
 
   if Tools.is_legal_point(leadPoint, newPoint, self.obstacles, self.safeRadius) is True and Tools.getDistance(leadPoint, newPoint) <= self.targetRadius:
