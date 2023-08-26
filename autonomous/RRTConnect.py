@@ -29,7 +29,7 @@ class RRTConnect():
 
         self.closestNode = None
         self.minDistance = 0  # the minimum distance between a leadpoint and nodes
-        self.newPoint_closest = None
+        self.newPoint = None
 
         self.connection = False
         self.previousNewTPoint = self.departure
@@ -51,18 +51,18 @@ class RRTConnect():
             if iterate >= self.maxIterations:
                 break
 
-            if self.newPoint_closest is not None:
-                self.previousNewTPoint = self.newPoint_closest
+            # if self.newPoint is not None:
+            self.previousNewTPoint = self.newPoint
 
             self.get_legal_children_point(self.treeTurns[0])
-            newChildNode = TreeNode(self.newPoint_closest[0], self.newPoint_closest[1])
+            newChildNode = TreeNode(self.newPoint[0], self.newPoint[1])
             newChildNode.parent = self.closestNode
             self.closestNode.children.append(newChildNode)
             self.treeNodes.append(newChildNode)
 
-            leadPoint = self.newPoint_closest
+            leadPoint = self.newPoint
 
-            self.generate_nexttree_nodes(self.treeTurns[1], leadPoint, self.stepSize, isGreedy, isDynamicStep)
+            self.generate_nexttree_nodes(self.treeTurns[0], self.treeTurns[1], leadPoint, self.stepSize, isGreedy, isDynamicStep)
 
             if self.connection is True:
                 self.junctionNodes.append(newChildNode)
@@ -71,7 +71,7 @@ class RRTConnect():
 
             self.treeTurns.reverse()
 
-    def generate_nexttree_nodes(self, tree, leadPoint, stepSize, isGreedy, isDynamicStep):
+    def generate_nexttree_nodes(self, oppositeTree, tree, leadPoint, stepSize, isGreedy, isDynamicStep):
         """
         generate nodes in next tree
         :param tree:
@@ -83,56 +83,71 @@ class RRTConnect():
 
         self.minDistance = 0
         self.find_children_point_from_tree(tree, leadPoint, stepSize)
-        while 1:
-            isLegal = Tools.is_legal_point((self.closestNode.locationX, self.closestNode.locationY),
-                                           self.newPoint_closest,
-                                           self.obstacles, self.safeRadius)
-            if isLegal is not True:
-                # the purpose is to set previousNewTPoint = closestNode, when newPoint_closest is illegal
-                self.newPoint_closest = (self.closestNode.locationX, self.closestNode.locationY)
 
-                # if the new point is illegal, then reset the stepSize
-                if isGreedy is True and isDynamicStep is True:
-                    stepSize = self.stepSize
+        if isGreedy is True:
+            while 1:
+                newChildNode = self.grow_legal_node(leadPoint, (self.closestNode.locationX, self.closestNode.locationY),
+                                     self.newPoint,
+                                     self.obstacles, self.safeRadius)
+                if newChildNode is None:
+                    # the purpose is to set previousNewTPoint = closestNode, when newPoint is illegal
+                    self.newPoint = (self.closestNode.locationX, self.closestNode.locationY)
 
-                break
+                    # if the new point is illegal, then reset the stepSize
+                    if isDynamicStep is True:
+                        stepSize = self.stepSize
 
-            newChildNode = TreeNode(self.newPoint_closest[0], self.newPoint_closest[1])
+                    break
+                else:
+                    if self.connection is True:
+                        break
+                    elif isDynamicStep is True:
+                        stepSize += self.stepSize
+
+                    self.closestNode = newChildNode
+                    self.newPoint = self.find_children_point_from_closestnode(self.closestNode, leadPoint, stepSize)
+        else:
+            self.grow_legal_node(leadPoint, (self.closestNode.locationX, self.closestNode.locationY),
+                                                self.newPoint,
+                                                self.obstacles, self.safeRadius)
+
+    def grow_legal_node(self, leadPoint, closestPoint, newPoint, obstacles, safeRadius):
+        self.lastLeadPoint = leadPoint
+
+        isLegal = Tools.is_legal_point(closestPoint, newPoint, obstacles, safeRadius)
+
+        if isLegal is True:
+            newChildNode = TreeNode(self.newPoint[0], self.newPoint[1])
             newChildNode.parent = self.closestNode
             self.closestNode.children.append(newChildNode)
             self.treeNodes.append(newChildNode)
 
-            self.try_connect(leadPoint, self.previousNewTPoint, self.newPoint_closest)
+            self.try_connect(leadPoint, self.previousNewTPoint, self.newPoint)
             if self.connection is True:
                 self.junctionNodes.append(newChildNode)
-                break
 
-            if isGreedy is False:
-                break
-            else:
-                if isDynamicStep is True:
-                    stepSize += self.stepSize
+            return newChildNode
+        else:
+            self.newPoint = None
+            return None
 
-                self.closestNode = newChildNode
-                self.newPoint_closest = self.find_children_point_from_closestnode(self.closestNode, leadPoint, stepSize)
-
-    def try_connect(self, leadPoint, previousNewTPoint, newPoint_closest):
+    def try_connect(self, leadPoint, previousNewTPoint, newPoint):
         """
         try to connect lead point and new point or previous new targeted point and new point
         :param leadPoint:
-        :param newPoint_closest:
+        :param newPoint:
         :return:
         """
-        self.lastLeadPoint = leadPoint
 
-        if Tools.is_legal_point(leadPoint, newPoint_closest, self.obstacles,
+        if Tools.is_legal_point(leadPoint, newPoint, self.obstacles,
                                 self.safeRadius) is True and Tools.getDistance(leadPoint,
-                                                                               newPoint_closest) <= self.targetRadius:
+                                                                               newPoint) <= self.targetRadius:
             self.connection = True
 
-        elif Tools.is_legal_point(previousNewTPoint, newPoint_closest, self.obstacles,
-                                self.safeRadius) is True and Tools.getDistance(previousNewTPoint,
-                                                                               newPoint_closest) <= self.targetRadius:
+
+        elif previousNewTPoint is not None and Tools.is_legal_point(previousNewTPoint, newPoint, self.obstacles,
+                                  self.safeRadius) is True and Tools.getDistance(previousNewTPoint,
+                                                                                 newPoint) <= self.targetRadius:
             self.connection = True
 
     def get_solution_paths(self):
@@ -182,7 +197,7 @@ class RRTConnect():
         '''
         leadPoint = self.lead_point()
         self.find_children_point_from_tree(tree, leadPoint, self.stepSize)
-        isLegal = Tools.is_legal_point((self.closestNode.locationX, self.closestNode.locationY), self.newPoint_closest,
+        isLegal = Tools.is_legal_point((self.closestNode.locationX, self.closestNode.locationY), self.newPoint,
                                        self.obstacles, self.safeRadius)
 
         if isLegal is not True:
@@ -197,7 +212,7 @@ class RRTConnect():
         """
         self.minDistance = 0
         self.find_closest_node(tree, leadPoint)
-        self.newPoint_closest = self.find_children_point_from_closestnode(self.closestNode, leadPoint, stepSize)
+        self.newPoint = self.find_children_point_from_closestnode(self.closestNode, leadPoint, stepSize)
 
     def find_children_point_from_closestnode(self, closestNode, leadPoint, stepSize):
         '''

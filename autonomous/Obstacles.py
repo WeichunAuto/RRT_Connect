@@ -77,7 +77,7 @@ def generate_obstacles(numbers=1):
 
     for i in range(numbers):
         init_pos = 1 if np.random.uniform(-1, 1) > 0 else -1
-        pos_x = i * 20 * init_pos
+        pos_x = i * 30 * init_pos
         pos_y = np.random.uniform(-300, 300)
 
         slide = np.random.randint(3, 9)

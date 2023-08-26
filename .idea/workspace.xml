@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2206b68c-e655-4db3-b2ee-93717ced538d" name="Changes" comment="format code">
+    <list default="true" id="2206b68c-e655-4db3-b2ee-93717ced538d" name="Changes" comment="implement dynamic step size strategy to test the efficiency">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Environment_Connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Environment_Connect.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autonomous/Obstacles.py" beforeDir="false" afterPath="$PROJECT_DIR$/autonomous/Obstacles.py" afterDir="false" />
@@ -156,7 +156,21 @@
       <option name="project" value="LOCAL" />
       <updated>1692343123825</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add the dynamic step size strategy">
+      <created>1692695739742</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1692695739742</updated>
+    </task>
+    <task id="LOCAL-00010" summary="implement dynamic step size strategy to test the efficiency">
+      <created>1692697006844</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1692697006844</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -168,19 +182,21 @@
     <MESSAGE value="move it out from autonomous package" />
     <MESSAGE value="Fix bugs of RRT_connect without greedy strategy." />
     <MESSAGE value="format code" />
-    <option name="LAST_COMMIT_MESSAGE" value="format code" />
+    <MESSAGE value="Add the dynamic step size strategy" />
+    <MESSAGE value="implement dynamic step size strategy to test the efficiency" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement dynamic step size strategy to test the efficiency" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Environment_Connect.py</url>
-          <line>122</line>
+          <line>136</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/autonomous/RRTConnect.py</url>
-          <line>155</line>
+          <line>170</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
