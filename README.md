@@ -42,3 +42,4 @@ def try_connect(self, leadPoint, previousNewTPoint, newPoint):
   
 ```
 > RRT-Connect algorithm with a greedy strategy
+A greedy strategy
